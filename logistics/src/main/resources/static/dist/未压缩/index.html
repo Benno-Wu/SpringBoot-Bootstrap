@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./bootstrap-4.5.0-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./bootstrap-4.5.0-dist/css/bootstrap.min.css">
+    <title>Logistics</title>
+    <link rel="icon" href="./pic/favicon.ico">
+    <link rel="shortcut icon" href="./pic/favicon.ico">
+    <style>
+        .bg-gray {
+            background-color: gray;
+        }
+
+        /*#worker {*/
+        /*    border: 5px pink dotted;*/
+        /*}*/
+
+        /*#student {*/
+        /*    border: 1px orange dashed;*/
+        /*}*/
+
+        .noPaddingMargin {
+            padding: 0;
+            margin: 0;
+        }
+
+        .minh-80 {
+            min-height: 80rem;
+        }
+
+        .mh-50 {
+            max-height: 50%;
+            max-width: 11rem;
+        }
+
+        .mw-8r {
+            max-width: 8rem;
+        }
+
+        .card-self {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .bottom-end {
+            align-self: flex-end;
+        }
+    </style>
+</head>
+
+<body class="bg-dark">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./bootstrap-4.5.0-dist/jquery.slim.min.js"></script>
+    <script src="./bootstrap-4.5.0-dist/popper.min.js"></script>
+    <script src="./bootstrap-4.5.0-dist/js/bootstrap.js"></script>
+
+    <!-- Webpack -->
+    <!-- <script src="main.js"></script> -->
+    <!-- NoWebpack -->
+    <!-- init -->
+    <script src="init.js"></script>
+    <!-- component -->
+    <script src="./component/info.js"></script>
+    <script src="./component/detail.js"></script>
+    <!-- control -->
+    <script src="./control/login.js"></script>
+    <script src="./control/register.js"></script>
+    <script src="./control/repair.js"></script>
+
+    <!-- 全局交互提示 -->
+    <div id="message" class="alert alert-warning alert-dismissible fade show" role="alert" hidden>
+        <strong>Message:</strong>
+        <p></p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">X</span>
+        </button>
+    </div>
+    <!-- 左右布局 -->
+    <div class="d-flex justify-content-center">
+        <!-- 个人信息页+各类功能 -->
+        <div class="container bg-secondary mx-1 minh-80" style="width: 20%; min-width: 12rem; max-width: 20rem;">
+            <div class="card bg-gray ">
+                <!-- defaultPic -->
+                <div class="sticky-top">
+                    <img src="./pic/sun.png" id="pic" class="card-img-top">
+                </div>
+                <!-- login/register -->
+                <div class="form-group m-auto" id="login">
+                    <label class="col-form-label" for="StudentIDCode">StudentID/Code</label>
+                    <div class="col">
+                        <input type="text" autofocus class="form-control" id="StudentIDCode"
+                            placeholder="StudentID/Code">
+                    </div>
+                    <label class="col-form-label" for="Password">Password</label>
+                    <div class="col">
+                        <input type="password" class="form-control" id="Password" placeholder="Password">
+                    </div>
+                    <div class="my-1">
+                        <div class="col-auto noPaddingMargin">
+                            <div class="form-check-inline">
+                                <div class="mx-1">
+                                    <input class="form-check-input" type="radio" name="type" id="student"
+                                        value="student">
+                                    <label class="form-check-label" for="student">学生</label>
+                                </div>
+                                <div class="mx-1">
+                                    <input class="form-check-input" type="radio" name="type" id="worker" value="worker">
+                                    <label class="form-check-label" for="worker">维修工</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center my-2">
+                        <!-- login -->
+                        <button type="button" class="btn btn-primary" onclick="login();">登录</button>
+                        <!-- register -->
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal"
+                            onclick="registerShow();">注册</button>
+                        <!-- Modal -->
+                        <div tabindex="-1" class="modal fade" id="register" role="dialog" aria-hidden="true"
+                            aria-labelledby="exampleModalCenteredScrollableTitle" style="display: none;">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <!-- <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenteredScrollableTitle">Register</h5>
+                                        <button class="close" aria-label="Close" type="button" data-dismiss="modal">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div> -->
+                                    <form class="modal-body" id="registerForm" onsubmit="register();return false;">
+
+                                    </form>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">关闭</button>
+                                        <button class="btn btn-primary" type="submit" form="registerForm">注册</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- info -->
+                <div id="info">
+                </div>
+                <!-- upload -->
+                <div class="my-1" id="upload">
+                </div>
+                <!-- update -->
+                <div class="my-1" id="update">
+                </div>
+
+            </div>
+        </div>
+        <!-- 报修信息上下布局 -->
+        <div class="container bg-danger col noPaddingMargin" style="min-width: 36rem;">
+            <div class="h-50 btn-toolbar" id="fixed">
+            </div>
+
+            <div class="h-50 btn-toolbar" id="submitted">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

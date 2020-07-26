@@ -1,0 +1,25 @@
+#comment
+swagger:
+  title: SpringBoot+Swagger+SpringSecurity with yml
+  description: description_yml测试
+  version: 0.0.1
+  basePackage: zust.logistics.controller
+  contact:
+    name: example
+    url: http://www.example.com
+    email: yml@example.com
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/zust_logistics
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  jackson:
+    #2019-10-11 13:33:05
+    date-format: java.text.SimpleDateFormat
+    time-zone: GMT+8
