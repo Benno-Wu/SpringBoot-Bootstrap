@@ -1,0 +1,20 @@
+{
+    "student": {
+        //length>5
+        "stuID": "test",
+        "name": "test",
+        "tel": "123",
+        "room": "A1",
+        "photo": "./sun.png"
+    },
+    "worker": {
+        "code": "test",
+        "name": "test",
+        "tel": "123",
+        "photo": "./sun.png"
+    },
+    "repair": {
+        "room": "A1",
+        "note": "note"
+    }
+}
